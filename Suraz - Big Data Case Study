@@ -1,0 +1,40 @@
+Links : https://www.onlinelearningcenter.in/blog/post/suraz-big-data-program-case-study
+Solution: https://www.linkedin.com/posts/suraj-raju-k-data-speaks_my-sql-challenge-with-answers-ugcPost-6937648518744391680-lVXi/?utm_source=linkedin_share&utm_medium=android_app
+
+
+
+********************************************************************************
+
+Q6 Which course was purchased first by the user after they became students?
+
+with cte as(select sales.student_id, order_date, course_id,joining_date,
+dense_rank() over(partition by sales.student_id order by order_date ) as rnk
+from sales
+join student 
+on sales.student_id = student.student_id
+where joining_date<=order_date
+order by sales.student_id)
+
+select cte.*, course.course_name from cte 
+inner join course
+on cte.course_id = course.course_id
+where rnk=1
+order by student_id;
+
+********************************************************************************
+
+Q7.Which course was purchased just before the user became a student?
+
+with cte as(select sales.student_id, order_date, course_id,joining_date,
+dense_rank() over(partition by sales.student_id order by order_date desc ) as rnk
+from sales
+join student 
+on sales.student_id = student.student_id
+where joining_date>order_date
+order by sales.student_id)
+
+select cte.*, course.course_name from cte 
+inner join course
+on cte.course_id = course.course_id
+where rnk=1
+order by student_id;
