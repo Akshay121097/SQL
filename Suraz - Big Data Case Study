@@ -38,3 +38,17 @@ inner join course
 on cte.course_id = course.course_id
 where rnk=1
 order by student_id;
+
+
+***********************************************************************************
+
+Q8. What are the total course and amounts spent for each user before they became a student?
+
+select sales.student_id,course_name,count(1) as courses , sum(price) as amount
+from sales
+join student 
+on sales.student_id = student.student_id
+join course 
+on sales.course_id = course.course_id
+where joining_date>order_date
+group by 1,2
