@@ -3,6 +3,23 @@ Solution: https://www.linkedin.com/posts/suraj-raju-k-data-speaks_my-sql-challen
 
 
 
+
+
+********************************************************************************
+
+Q5.Which course was the most popular for each student?
+
+with cte as (select student_id,
+course_id,
+count(1),
+dense_rank() over(partition by student_id order by count(1) desc) as rnk
+from sales
+group by 1,2)
+
+select student_id, course_id
+from cte 
+where rnk=1;
+
 ********************************************************************************
 
 Q6 Which course was purchased first by the user after they became students?
