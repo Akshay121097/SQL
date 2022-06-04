@@ -68,4 +68,18 @@ group by 1;
 
 ***********************************************************************************
 
+Q10. In the first week after a student joins the program (including their joining date) they earn 2x points on all items,
+not just Hadoop - how many points do students ABC and BCD have at the end of January?
+
+select sales.student_id,
+sum(case when (order_date - joining_date)<=6 then price*0.02 
+     else price *0.01 
+     end) as total
+from sales
+join student 
+on sales.student_id = student.student_id
+join course 
+on sales.course_id = course.course_id
+where joining_date<=order_date
+group by 1;
 
