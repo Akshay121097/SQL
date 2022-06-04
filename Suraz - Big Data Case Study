@@ -52,3 +52,20 @@ join course
 on sales.course_id = course.course_id
 where joining_date>order_date
 group by 1,2
+
+***********************************************************************************
+
+Q9. If each RS1000 spent equates to 10 points and Hadoop has a 2x points multiplier - how many points would each student have?
+
+select student_id,
+sum(case when course_name<>'Hadoop' then (price/1000)*10 
+     else (price/1000)*20
+     end) as tt
+from sales
+join course 
+on sales.course_id = course.course_id
+group by 1;
+
+***********************************************************************************
+
+
