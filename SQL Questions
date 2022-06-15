@@ -39,3 +39,19 @@ Code  flag_name
 124      a_flag
 125      c_flag
 125      d_flag
+
+
+*************************************
+
+
+Q.
+Create table child_parent (child_id in, parent_id int , active_flag int )
+
+Insert into child_parent(child_id, parent_id, active_flag) values (356,123,0),(374,124,0),(364,123,1),(123,123,1),(364,123,0)
+
+Conditions :
+If parent_id = child_id then take the same flag as given
+
+If parent_id not equal to child_id
+
+Then we have to check any of the parent id 's child_id... Have flag 1 and take that 1 as new flag
