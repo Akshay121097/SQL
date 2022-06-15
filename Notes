@@ -1,0 +1,31 @@
+There are 'n' number of parameters which impacts the performance and hence the response time of SQL queries fetching you the final result.
+
+Few of the parameters are:
+
+1. Table size
+
+2. Query complexity
+
+3. Concurrent users hitting the same table
+
+4. Buffer memory(RAM)
+
+5. Storage
+
+6.CPU
+
+7.Processing Speed etc.
+
+8. Size of a buffer memory must be sufficient enough to maintain/store active data of your database.
+
+
+
+Buffer memory should be of a size that is enough to maintain active data of your database.
+
+If the SQL platform on which you are working is not configured with enough RAM then it will delete the older cache and then new active data/records will be stored in buffer memory.
+
+It also depends on how much minimum and maximum server memory have been configured.
+
+
+
+Hope it is clear now !
