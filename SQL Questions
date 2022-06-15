@@ -55,3 +55,17 @@ If parent_id = child_id then take the same flag as given
 If parent_id not equal to child_id
 
 Then we have to check any of the parent id 's child_id... Have flag 1 and take that 1 as new flag
+
+*******************************************************
+
+Input : 
+
+A     B     C 
+1     N     N 
+N     2     N
+N     N     3
+
+Output: 
+
+A     B     C 
+1     2     3
