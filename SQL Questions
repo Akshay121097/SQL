@@ -21,3 +21,21 @@ Overs  Runs
 1     11
 2     14
 3     1
+
+
+*************************************************
+
+Table script :
+
+Creat table flags (code_id int, a_flag bool,b_flag bool ,c_flag bool,d_flag bool)
+
+
+Insert into flags values (123,1,0,1,0),(124,1,0,0,0),(125,0,0,1,1)
+
+Output needed :
+Code  flag_name
+123      a_flag
+123      c_flag
+124      a_flag
+125      c_flag
+125      d_flag
