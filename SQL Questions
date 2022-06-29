@@ -69,3 +69,47 @@ Output:
 
 A     B     C 
 1     2     3
+
+******************************************************
+
+.Write an SQL query to find the total points scored by each pair of players.
+Output must be in ascending order for each pair
+
+Table Script:
+create table teams(team1 varchar(50),team2 varchar(50),points int) 
+insert into teams values('a','b',10);
+insert into teams values('b','a',20);
+insert into teams values('c','d',30);
+insert into teams values('d','c',40);
+insert into teams values('a','e',50);
+insert into teams values('e','a',60);
+
+
+Output must be in the same sequence.
+Output:
+Team1-->Team2-->Total_Point
+a       b      30
+a       e      110
+c       d      70
+
+
+Solution
+select * from teams;
+
+
+with cte as (select *,
+case when team1<team2 then team1 else team2 end as t1,
+case when team1<team2 then team2 else team1 end as t2
+from teams)
+
+
+select t1,t2, sum(points) as total_points
+from cte 
+group by 1,2
+
+ t1 | t2 | total_points 
+----+----+--------------
+ a  | e  |          110
+ a  | b  |           30
+ c  | d  |           70
+(3 rows)
