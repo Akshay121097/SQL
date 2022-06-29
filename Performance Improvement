@@ -1,0 +1,10 @@
+Below are some of common practices which we must adopt in order to enhance the performance of SQL queries
+
+1. Avoid using * in select clause.
+2. Avoid using subqueries instead use cte.
+3. Avoid using order by within cte.
+4. Always use order by once all the logic is implemented.
+5. Apply as much filter conditions as possible while using joins.
+6. Avoid using Distinct in minus query as it has inbuilt Distinct functionality.
+7. Avoid using IN and NOT IN operator if there is a scope for NULL records.
+8. Avoid using WHERE clause while joining tables instead use ON as where creates a Cartesian join
