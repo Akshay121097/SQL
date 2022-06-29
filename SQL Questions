@@ -113,3 +113,28 @@ group by 1,2
  a  | b  |           30
  c  | d  |           70
 (3 rows)
+
+******************************************************************************
+Q.Write an SQL query to find the total points scored by each pair of players.
+Output must be in ascending order for each pair
+
+create table student(name varchar(50),marks int,dept varchar(50));
+insert into student values('a',60,'ec');
+insert into student values('b',70,'cs');
+insert into student values('c',40,'me');
+insert into student values('d',50,'ec');
+insert into student values('e',30,'cs');
+insert into student values('f',70,'me');
+insert into student values('g',70,'cs');
+insert into student values('h',40,'ec');
+insert into student values('i',70,'me');
+insert into student values('k',40,'ec');
+insert into student values('l',40,'cs');
+
+Solution
+
+select * from student;
+select avg(marks) from (select *,
+row_number() over() as rn 
+from student)A 
+where rn<=5;
