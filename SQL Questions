@@ -1,7 +1,6 @@
 Q.Write an SQL query to fetch the runs scored in each over.
 
-Table Script:
-create table cricket(ball_cnt integer , run varchar2(100));
+create table cricket(ball_cnt integer , run integer);
 insert into cricket values(1,4);
 insert into cricket values(2,0);
 insert into cricket values(3,2);
@@ -15,6 +14,19 @@ insert into cricket values(10,0);
 insert into cricket values(11,0);
 insert into cricket values(12,0);
 insert into cricket values(13,1);
+
+select * from cricket;
+
+Solution
+
+with cte as (select ball_cnt, (ball_cnt-1)/6 +1 as over,run
+from cricket)
+
+select over, sum(run) as runs
+from cte 
+group by 1
+order by 1;
+
 
 Output:
 Overs  Runs
